@@ -5,6 +5,7 @@
   left: 0;
   top: 0;
   background-color: #adddf6;
+  transition: width 0.2s;
 }
 
 .navbar-list {
@@ -85,10 +86,6 @@
     width: 2.5rem;
     height: 2.5rem;
   }
-
-  .navbar:hover .text {
-    margin: auto 0 auto 0.45rem;
-  }
 }
 
 .icon {
@@ -118,17 +115,20 @@
   margin: auto 0;
   padding: 0;
   overflow: hidden;
-  transition: width 0.25s;
+  transition: width 0.3s ease, margin 0.25s ease, color 0.25s;
 }
 
 @media (min-width: 1440px) {
   .text {
     display: block;
   }
-}
 
-@media (min-width: 1440px) {
   .navbar:hover .text {
-    width: max-content;
+    width: 4.2rem;
+    margin: auto 0 auto 0.45rem;
+  }
+
+  .icon-container:hover .text {
+    color: #7730b8;
   }
 }

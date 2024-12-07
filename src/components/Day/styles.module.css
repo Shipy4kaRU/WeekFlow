@@ -1,0 +1,17 @@
+.day {
+  max-width: 100%;
+  margin: 1rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .day {
+    max-width: 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .day {
+    max-width: 20%;
+    min-width: 15%;
+  }
+}

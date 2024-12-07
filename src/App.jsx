@@ -10,9 +10,9 @@ function App() {
       <Header></Header>
       <Switch>
         <Route path="/" exact>
-          <Redirect to="/home" />
+          <Redirect to="/calendar" />
         </Route>
-        <Route path="/home">
+        <Route path="/calendar">
           <Home />
         </Route>
         <Route path="*">
