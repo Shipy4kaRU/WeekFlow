@@ -1,0 +1,45 @@
+.page-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  max-height: 800px;
+  overflow: hidden;
+}
+
+.page-404__header {
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+
+.page-404__text {
+  font-size: 2rem;
+  margin: 0;
+  color: #333333;
+}
+
+.page-404__sub-text {
+  margin: 0 0 0.7rem 0;
+}
+
+.page-404__animation {
+  background-image: url("../../assets/notfound.gif");
+  width: 70%;
+  height: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.button {
+  display: block;
+  text-transform: uppercase;
+  color: white;
+  background-color: #39ad31;
+  background-image: linear-gradient(to right, #39ad31, #388f2b);
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.7rem;
+  margin-bottom: 0.5rem;
+}
