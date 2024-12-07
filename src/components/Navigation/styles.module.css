@@ -1,0 +1,134 @@
+.navbar {
+  position: fixed;
+  height: 100%;
+  width: auto;
+  left: 0;
+  top: 0;
+  background-color: #adddf6;
+}
+
+.navbar-list {
+}
+
+.navbar-list .link-element:first-child {
+  margin-top: 0.7rem;
+}
+
+@media (min-width: 768px) {
+  .navbar-list .link-element:first-child {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .link-element + .link-element {
+    margin-top: 0.4rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .link-element + .link-element {
+    margin-top: 1rem;
+  }
+}
+
+.link {
+  display: flex;
+  padding: 0 0.3rem;
+  transition: color 0.15s, transform 0.15s;
+  color: #551a8b;
+}
+
+@media (min-width: 768px) {
+  .link {
+    padding: 0 0.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .link {
+    padding: 0 0.85rem;
+  }
+}
+
+.link:active {
+  color: #20013e;
+  transform: scale(1.1);
+}
+
+.icon-container {
+  position: relative;
+  display: flex;
+}
+
+@media (min-width: 1440px) {
+  .animation {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .animation::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #957dab;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease-in, height 0.2s ease-in;
+  }
+
+  .icon-container:hover .animation::after {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .navbar:hover .text {
+    margin: auto 0 auto 0.45rem;
+  }
+}
+
+.icon {
+  position: relative;
+  width: 0.7rem;
+  height: 0.7rem;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.text {
+  width: 0;
+  display: none;
+  margin: auto 0;
+  padding: 0;
+  overflow: hidden;
+  transition: width 0.25s;
+}
+
+@media (min-width: 1440px) {
+  .text {
+    display: block;
+  }
+}
+
+@media (min-width: 1440px) {
+  .navbar:hover .text {
+    width: max-content;
+  }
+}

@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import Navigation from "../Navigarion/Navigation";
+import Navigation from "../Navigation/Navigation";
 // import { formatDate } from "../../helpers/formatDate()";
 
 const Header = () => {
