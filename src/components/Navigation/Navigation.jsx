@@ -8,7 +8,7 @@ const Navigation = () => {
         <li className={styles["link-element"]}>
           <NavLink
             activeClassName={styles.active}
-            to="#"
+            to="/home"
             className={styles.link}
           >
             <div className={styles["icon-container"]}>
@@ -36,7 +36,7 @@ const Navigation = () => {
         <li className={styles["link-element"]}>
           <NavLink
             activeClassName={styles.active}
-            to="#"
+            to="/profile"
             className={styles.link}
           >
             <div className={styles["icon-container"]}>
@@ -64,7 +64,7 @@ const Navigation = () => {
         <li className={styles["link-element"]}>
           <NavLink
             activeClassName={styles.active}
-            to="#"
+            to="/settings"
             className={styles.link}
           >
             <div className={styles["icon-container"]}>
