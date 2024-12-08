@@ -15,3 +15,17 @@
     min-width: 15%;
   }
 }
+
+.date-container {
+  padding: 0 0.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.active {
+  background-color: red;
+}
+
+.date p {
+  margin: 0 0 0.2rem 0;
+}

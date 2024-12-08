@@ -1,9 +1,21 @@
 import styles from "./styles.module.css";
 import Input from "../UI/Input/Input";
 
-const Day = () => {
+// #39ad31
+
+const weekDays = ["вс", "пн", "вт", "ср", "чт", "пт", "сб", "вс"];
+
+const Day = ({ date, active }) => {
   return (
     <div className={styles.day}>
+      <div
+        className={`${styles["date-container"]} ${active ? styles.active : ""}`}
+      >
+        <p className={styles.date}>{`${date.getDate()}.${date.getMonth()}`}</p>
+        <p className={styles.weekDay}>
+          {weekDays[date.getDay()].toUpperCase()}
+        </p>
+      </div>
       <Input></Input>
       <Input></Input>
       <Input></Input>

@@ -1,6 +1,6 @@
 :root {
   box-sizing: border-box;
-  font-family: "Oswald", serif;
+  font-family: "Oswald", "Arial", sans-serif;
   font-size: calc(0.5em + 1vw);
 }
 
@@ -51,6 +51,9 @@ a {
 button {
   cursor: pointer;
   border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
 }
 
 .visually-hidden {
