@@ -3,7 +3,7 @@ import Input from "../UI/Input/Input";
 
 // #39ad31
 
-const weekDays = ["вс", "пн", "вт", "ср", "чт", "пт", "сб", "вс"];
+const weekDays = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
 const Day = ({ date, active }) => {
   return (
@@ -12,9 +12,7 @@ const Day = ({ date, active }) => {
         className={`${styles["date-container"]} ${active ? styles.active : ""}`}
       >
         <p className={styles.date}>{`${date.getDate()}.${date.getMonth()}`}</p>
-        <p className={styles.weekDay}>
-          {weekDays[date.getDay()].toUpperCase()}
-        </p>
+        <p className={styles.weekDay}>{weekDays[date.getDay()]}</p>
       </div>
       <Input></Input>
       <Input></Input>

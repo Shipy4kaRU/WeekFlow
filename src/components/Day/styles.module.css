@@ -18,14 +18,23 @@
 
 .date-container {
   padding: 0 0.1rem;
+  border-bottom: solid 3.5px black;
   display: flex;
   justify-content: space-between;
 }
 
 .active {
-  background-color: red;
+  color: #551a8b;
+  border-color: #551a8b;
 }
 
-.date p {
+.date {
   margin: 0 0 0.2rem 0;
+  font-weight: 800;
+}
+
+.weekDay {
+  margin: 0 0 0.2rem 0;
+  font-weight: 600;
+  opacity: 0.4;
 }
