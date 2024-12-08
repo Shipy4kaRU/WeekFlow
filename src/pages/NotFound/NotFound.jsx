@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import DoubleContainer from "../../components/UI/DoubleContainer/DoubleContainer";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
@@ -12,7 +12,7 @@ const NotFound = () => {
         <p className={styles["page-404__sub-text"]}>
           страница, которую вы ищете, недоступна!
         </p>
-        <Link to="/home" className={styles.button}>
+        <Link to="/calendar" className={styles.button}>
           Найти путь домой
         </Link>
       </section>
