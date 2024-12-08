@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import isLoggedSliceReducers from "./isLoggedSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    isLogged: isLoggedSliceReducers,
+  },
 });
 
 export default store;
