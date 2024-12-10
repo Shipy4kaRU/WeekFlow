@@ -1,10 +1,6 @@
 .navbar {
-  position: fixed;
   height: 100%;
   width: auto;
-  left: 0;
-  top: 0;
-  background-color: #adddf6;
   transition: width 0.2s;
 }
 
@@ -37,7 +33,7 @@
   display: flex;
   padding: 0 0.3rem;
   transition: color 0.15s, transform 0.15s;
-  color: #551a8b;
+  color: var(--navbar-text-color);
 }
 
 @media (min-width: 768px) {
@@ -53,8 +49,8 @@
 }
 
 .link:active {
-  color: #20013e;
-  transform: scale(1.1);
+  color: var(--navbar-text-active-color);
+  transform: scale(1.07);
 }
 
 .icon-container {
@@ -77,7 +73,7 @@
     width: 0;
     height: 0;
     border-radius: 50%;
-    background-color: #957dab;
+    background-color: var(--navbar-icon-hover-color);
     transform: translate(-50%, -50%);
     transition: width 0.2s ease-in, height 0.2s ease-in;
   }
@@ -90,8 +86,8 @@
 
 .icon {
   position: relative;
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 1rem;
+  height: 1rem;
   z-index: 1;
 }
 
@@ -129,6 +125,18 @@
   }
 
   .icon-container:hover .text {
-    color: #7730b8;
+    color: var(--navbar-text-hover-color);
   }
+
+  .link:active .text {
+    color: var(--navbar-text-active-color);
+  }
+}
+
+.active {
+  color: var(--navbar-text-hover-color);
+}
+
+.active .animation::after {
+  background-color: var(--active-navber-icon-hover-color);
 }

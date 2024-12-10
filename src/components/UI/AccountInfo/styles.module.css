@@ -1,0 +1,21 @@
+.account {
+  display: flex;
+}
+
+.profile {
+  margin: 0 0.3rem 0 0;
+}
+
+.info {
+  margin: 0;
+  cursor: pointer;
+  transform: opacity 0.25s;
+}
+
+.info:hover {
+  opacity: 0.8;
+}
+
+.info:active {
+  opacity: 0.5;
+}

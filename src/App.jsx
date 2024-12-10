@@ -7,20 +7,21 @@ import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import ParallaxBolls from "./components/ParallaxBolls/ParallaxBolls";
 
 function App() {
   const history = useHistory();
   const isLoggedIn = useSelector((state) => state.isLogged.isLogged);
 
-  // if (!isLoggedIn) {
-  //   history.replace("/login");
-  //   return (
-  //     <DoubleContainer>
-  //       <Header></Header>
-  //       <Login></Login>
-  //     </DoubleContainer>
-  //   );
-  // }
+  if (!isLoggedIn) {
+    history.replace("/login");
+    return (
+      <>
+        <Login />
+        <ParallaxBolls />
+      </>
+    );
+  }
 
   return (
     <DoubleContainer>

@@ -1,0 +1,21 @@
+.profile {
+  margin-top: 2rem;
+  width: 5rem;
+  height: 5rem;
+  margin-right: 1rem;
+}
+
+.img {
+  border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+  .profile {
+    margin-top: 2rem;
+    width: 10rem;
+    height: 10rem;
+  }
+  .img {
+    border-radius: 2rem;
+  }
+}

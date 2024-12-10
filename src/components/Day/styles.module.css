@@ -1,6 +1,7 @@
 .day {
   max-width: 100%;
   margin: 1rem 1rem;
+  color: #252525;
 }
 
 @media (min-width: 768px) {
@@ -18,14 +19,14 @@
 
 .date-container {
   padding: 0 0.1rem;
-  border-bottom: solid 3.5px black;
+  border-bottom: solid 3.5px #3f3d3d;
   display: flex;
   justify-content: space-between;
 }
 
 .active {
-  color: #551a8b;
-  border-color: #551a8b;
+  color: var(--green-color);
+  border-color: var(--green-color);
 }
 
 .date {
@@ -36,5 +37,5 @@
 .weekDay {
   margin: 0 0 0.2rem 0;
   font-weight: 600;
-  opacity: 0.4;
+  opacity: 0.5;
 }

@@ -2,6 +2,20 @@
   box-sizing: border-box;
   font-family: "Oswald", "Arial", sans-serif;
   font-size: calc(0.5em + 1vw);
+  --green-color: #39ad31;
+  --soft-gray-color: #dedede;
+  --navbar-color: #161616;
+  --navbar-text-color: #666666;
+  --navbar-text-hover-color: #e0e0e0;
+  --navbar-text-active-color: #4e4e4e;
+  --navbar-icon-hover-color: #efefef;
+  --active-navber-icon-hover-color: #666666; /*DARK-THEME-COLORS */
+  --navbar-color: #e0e7ef; /* Очень светлый серый с легким голубоватым оттенком для панели навигации */
+  --navbar-text-color: #333333; /* Темный текст для хорошей читаемости */
+  --navbar-text-hover-color: #39ad31; /* Ваш зеленый цвет для текста и иконок при наведении */
+  --navbar-text-active-color: #1e5e21; /* Темно-зеленый для активного текста и иконок */
+  --navbar-icon-hover-color: #39ad31; /* Ваш зеленый цвет для иконок при наведении */
+  --active-navber-icon-hover-color: #d0efd0; /* Светло-зеленый фон для активных иконок */
 }
 
 @media (max-width: 600px) {
