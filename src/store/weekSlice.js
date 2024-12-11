@@ -6,7 +6,7 @@ const initialState = [
   ["а я?"],
   ["и я?"],
   ["а я?"],
-  ["а я?"],
+  ["а я?", "а я?", "а я?"],
   ["а я?", "и я?", "и я?", "и я?", "и я?", "и я?"],
 ];
 
@@ -14,13 +14,7 @@ const weekSLice = createSlice({
   name: "week",
   initialState,
   reducers: {
-    setMonday(state, action) {},
-    setTueday(state, action) {},
-    setWednesday(state, action) {},
-    setThursday(state, action) {},
-    setFriday(state, action) {},
-    setSaturday(state, action) {},
-    setSunday(state, action) {},
+    setTask(state, action) {},
   },
 });
 

@@ -25,7 +25,7 @@ const Day = ({ date, active, data }) => {
       </div>
       {!data.length
         ? startDays
-        : data.map((el, index) => <Input key={index} text={el}></Input>)}
+        : data.map((el, index) => <Input key={index} task={el}></Input>)}
       <Input></Input>
       {difference > 0
         ? new Array(difference)
