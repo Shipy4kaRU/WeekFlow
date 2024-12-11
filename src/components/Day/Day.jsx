@@ -1,11 +1,20 @@
 import styles from "./styles.module.css";
 import Input from "../UI/Input/Input";
 
-// #39ad31
-
 const weekDays = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
-const Day = ({ date, active }) => {
+const startDays = (
+  <>
+    <Input></Input>
+    <Input></Input>
+    <Input></Input>
+    <Input></Input>
+  </>
+);
+
+const Day = ({ date, active, data }) => {
+  const difference = data.length === 0 ? "" : 4 - data.length;
+
   return (
     <div className={styles.day}>
       <div
@@ -14,11 +23,15 @@ const Day = ({ date, active }) => {
         <p className={styles.date}>{`${date.getDate()}.${date.getMonth()}`}</p>
         <p className={styles.weekDay}>{weekDays[date.getDay()]}</p>
       </div>
+      {!data.length
+        ? startDays
+        : data.map((el, index) => <Input key={index} text={el}></Input>)}
       <Input></Input>
-      <Input></Input>
-      <Input></Input>
-      <Input></Input>
-      <Input></Input>
+      {difference > 0
+        ? new Array(difference)
+            .fill(null)
+            .map((el, index) => <Input key={index}></Input>)
+        : ""}
     </div>
   );
 };

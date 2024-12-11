@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { WEEK_DAYS } from "../../constants/WEEK_DAYS";
 import { addDays } from "../../helpers/addDays";
 import { subtractDays } from "../../helpers/substractDays";
+import { useSelector } from "react-redux";
 
 const Week = () => {
   const [updatedWEEK_DAYS, setUpdatedWEEK_DAYS] = useState([]);
+  const week = useSelector((state) => state.week);
 
   useEffect(() => {
     const currentDate = new Date();
@@ -28,8 +30,13 @@ const Week = () => {
 
   return (
     <section className={styles.week}>
-      {updatedWEEK_DAYS.map((el) => (
-        <Day key={el.date.getDay()} active={el.active} date={el.date} />
+      {updatedWEEK_DAYS.map((el, index) => (
+        <Day
+          key={el.date.getDay()}
+          active={el.active}
+          date={el.date}
+          data={week[index]}
+        />
       ))}
     </section>
   );
