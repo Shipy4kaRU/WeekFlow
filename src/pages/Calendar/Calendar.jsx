@@ -5,6 +5,7 @@ import { formatDate } from "../../helpers/formatDate()";
 const Calendar = () => {
   return (
     <section className={styles.home}>
+      <h1 className="visually-hidden">Календарь</h1>
       <p className={styles.date}>
         {formatDate(
           new Date(),

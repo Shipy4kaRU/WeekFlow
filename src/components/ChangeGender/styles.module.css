@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+}
+
+.btn {
+  margin-left: 0.3rem;
+  font-size: 1rem;
+  font-family: "Oswald", "Arial", sans-serif;
+  transition: color 0.25s;
+}
+
+.active {
+  color: #278e20;
+}
+
+.btn:hover {
+  color: var(--green-color);
+}

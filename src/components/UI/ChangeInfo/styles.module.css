@@ -1,0 +1,36 @@
+.form {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  margin-left: 0.3rem;
+  font-size: 0.8rem;
+  height: 1.2rem;
+  width: 45%;
+  max-width: 200px;
+}
+
+.input:focus {
+  outline: 1.7px solid var(--green-color);
+}
+
+.button {
+  display: block;
+  margin-left: 0.3rem;
+  transition: color 0.25s;
+}
+
+.button:hover {
+  color: var(--green-color);
+}
+
+.button:active {
+  color: blue;
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+}
