@@ -53,6 +53,28 @@
   height: auto;
 }
 
+.bird {
+  position: absolute;
+  width: 4rem;
+  top: 1%;
+  right: 60%;
+}
+
+.bird--2 {
+  top: 3%;
+  right: 20%;
+}
+
+@media (min-width: 1040px) {
+  .bird {
+    top: 5%;
+  }
+
+  .bird--2 {
+    top: 10%;
+  }
+}
+
 .image-text {
   position: absolute;
   bottom: 0;

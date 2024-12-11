@@ -5,23 +5,18 @@ import NotFound from "./pages/NotFound/NotFound";
 import Calendar from "./pages/Calendar/Calendar";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
+import Settings from "./pages/Settings/Settings";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ParallaxBolls from "./components/ParallaxBolls/ParallaxBolls";
 
 function App() {
   const history = useHistory();
   const isLoggedIn = useSelector((state) => state.isLogged.isLogged);
 
-  if (!isLoggedIn) {
-    history.replace("/login");
-    return (
-      <>
-        <Login />
-        <ParallaxBolls />
-      </>
-    );
-  }
+  // if (!isLoggedIn) {
+  //   history.replace("/login");
+  //   return <Login />;
+  // }
 
   return (
     <DoubleContainer>
@@ -35,6 +30,9 @@ function App() {
         </Route>
         <Route path="/profile">
           <Profile />
+        </Route>
+        <Route path="/settings">
+          <Settings />
         </Route>
         <Route path="*">
           <NotFound />
