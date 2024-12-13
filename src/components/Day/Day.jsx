@@ -7,12 +7,15 @@ const Day = ({ date, active, data, onSave, onPassed }) => {
   const difference = data.length && 4 - data.length;
   const startDays = new Array(4).fill("");
 
+  console.log(date);
   return (
     <div className={styles.day}>
       <div
         className={`${styles["date-container"]} ${active ? styles.active : ""}`}
       >
-        <p className={styles.date}>{`${date.getDate()}.${date.getMonth()}`}</p>
+        <p className={styles.date}>{`${date.getDate()}.${
+          date.getMonth() + 1
+        }`}</p>
         <p className={styles.weekDay}>{weekDays[date.getDay()]}</p>
       </div>
       {!data.length
