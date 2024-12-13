@@ -2,8 +2,8 @@ import styles from "./styles.module.css";
 import svg from "../../../assets/svgSprite.svg";
 import { useState } from "react";
 
-const ChangeInfo = ({ text, onSubmit }) => {
-  const [input, setInput] = useState("");
+const ChangeInfo = ({ text, onSubmit, startValue }) => {
+  const [input, setInput] = useState(startValue);
 
   const onInputHandler = (e) => {
     setInput(e.target.value);
@@ -11,7 +11,6 @@ const ChangeInfo = ({ text, onSubmit }) => {
 
   const onSubmitHandler = () => {
     onSubmit(input);
-    setInput("");
   };
 
   return (
