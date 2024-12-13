@@ -1,3 +1,10 @@
+.input-container {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 .input {
   width: 100%;
   height: 1rem;
@@ -18,9 +25,42 @@
 
 .input:focus {
   outline: none;
-}
-
-.active {
   box-shadow: 0 0 10px 0.1px black;
   transform: scale(1.1);
+}
+
+.button {
+  position: absolute;
+  opacity: 0;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  transition: opacity 0.25s, color 0.13s;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.input:hover + .button,
+.button:hover {
+  opacity: 1;
+}
+
+.input:focus + .button {
+  right: 0rem;
+}
+
+.button:hover {
+  color: blue;
+}
+
+.button:active {
+  color: red;
+}
+
+.passed {
+  opacity: 0.5;
+  text-decoration: line-through;
 }

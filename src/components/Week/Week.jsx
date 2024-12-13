@@ -13,10 +13,16 @@ const Week = () => {
 
   const week = useSelector((state) => state.week);
 
-  const onSaveHandler = (day, text, inputNumber) => {
+  const onSaveHandler = (day, text, inputNumber, isPassed) => {
     if (day === 0) day = 6;
     else day--;
-    dispatch(weekActions.setTask({ day, text, inputNumber }));
+    dispatch(weekActions.setTask({ day, text, inputNumber, isPassed }));
+  };
+
+  const onPassedHandler = (day, inputNumber, isPassed) => {
+    if (day === 0) day = 6;
+    else day--;
+    dispatch(weekActions.setPassed({ day, inputNumber, isPassed }));
   };
 
   useEffect(() => {
@@ -46,6 +52,7 @@ const Week = () => {
           date={el.date}
           data={week[index]}
           onSave={onSaveHandler.bind(this, el.date.getDay())}
+          onPassed={onPassedHandler.bind(this, el.date.getDay())}
         />
       ))}
     </section>
