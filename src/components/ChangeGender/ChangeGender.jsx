@@ -13,15 +13,18 @@ const ChangeGender = () => {
       <button
         className={`${styles.btn} ${gender === "мужской" ? styles.active : ""}`}
         onClick={() => {
-          dispatch(accountActions.setGender("мужской"));
+          if (gender !== "мужской")
+            dispatch(accountActions.setGender("мужской"));
         }}
       >
         Муж
       </button>
+      <p>/</p>
       <button
         className={`${styles.btn} ${gender === "женский" ? styles.active : ""}`}
         onClick={() => {
-          dispatch(accountActions.setGender("женский"));
+          if (gender !== "женский")
+            dispatch(accountActions.setGender("женский"));
         }}
       >
         Жен
