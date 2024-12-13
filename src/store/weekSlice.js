@@ -1,20 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
-  ["я человек", "а я не человек"],
-  ["а я?"],
-  ["а я?"],
-  ["и я?"],
-  ["а я?"],
-  ["а я?", "а я?", "а я?"],
-  ["а я?", "и я?", "и я?", "и я?", "и я?", "и я?"],
-];
+const initialState = [["s"], [], [], [], [], [], []];
 
 const weekSLice = createSlice({
   name: "week",
   initialState,
   reducers: {
-    setTask(state, action) {},
+    setTask(state, action) {
+      state[action.payload.day][action.payload.inputNumber] =
+        action.payload.text;
+    },
   },
 });
 

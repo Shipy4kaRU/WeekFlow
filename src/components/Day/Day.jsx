@@ -3,17 +3,9 @@ import Input from "../UI/Input/Input";
 
 const weekDays = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
-const startDays = (
-  <>
-    <Input></Input>
-    <Input></Input>
-    <Input></Input>
-    <Input></Input>
-  </>
-);
-
-const Day = ({ date, active, data }) => {
-  const difference = data.length === 0 ? "" : 4 - data.length;
+const Day = ({ date, active, data, onSave }) => {
+  const difference = data.length === 0 ? false : 4 - data.length + 1;
+  const startDays = new Array(5).fill("");
 
   return (
     <div className={styles.day}>
@@ -24,14 +16,35 @@ const Day = ({ date, active, data }) => {
         <p className={styles.weekDay}>{weekDays[date.getDay()]}</p>
       </div>
       {!data.length
-        ? startDays
-        : data.map((el, index) => <Input key={index} task={el}></Input>)}
-      <Input></Input>
-      {difference > 0
-        ? new Array(difference)
-            .fill(null)
-            .map((el, index) => <Input key={index}></Input>)
-        : ""}
+        ? startDays.map((el, index) => (
+            <Input
+              key={index++}
+              task={el}
+              onSave={onSave}
+              inputNumber={index}
+              isDisabled={index++ > data.length ? true : false}
+            ></Input>
+          ))
+        : data.map((el, index) => (
+            <Input
+              key={index++}
+              task={el}
+              onSave={onSave}
+              inputNumber={index}
+              isDisabled={index > data.length ? true : false}
+            ></Input>
+          ))}
+      {Boolean(difference) &&
+        new Array(difference)
+          .fill(null)
+          .map((el, index) => (
+            <Input
+              key={index + data.length}
+              onSave={onSave}
+              inputNumber={index + data.length}
+              isDisabled={index + data.length > data.length ? true : false}
+            ></Input>
+          ))}
     </div>
   );
 };

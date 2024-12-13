@@ -16,7 +16,7 @@ const ChangeInfo = ({ text, onSubmit }) => {
 
   return (
     <form className={styles["form"]} onSubmit={onSubmitHandler}>
-      <label for="text" className={styles.text}>
+      <label htmlFor="text" className={styles.text}>
         {text}
       </label>
       <input

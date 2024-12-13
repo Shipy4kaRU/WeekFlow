@@ -4,11 +4,20 @@ import { useEffect, useState } from "react";
 import { WEEK_DAYS } from "../../constants/WEEK_DAYS";
 import { addDays } from "../../helpers/addDays";
 import { subtractDays } from "../../helpers/substractDays";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { weekActions } from "../../store/weekSlice";
 
 const Week = () => {
   const [updatedWEEK_DAYS, setUpdatedWEEK_DAYS] = useState([]);
+  const dispatch = useDispatch();
+
   const week = useSelector((state) => state.week);
+
+  const onSaveHandler = (day, text, inputNumber) => {
+    if (day === 0) day = 6;
+    else day--;
+    dispatch(weekActions.setTask({ day, text, inputNumber }));
+  };
 
   useEffect(() => {
     const currentDate = new Date();
@@ -36,6 +45,7 @@ const Week = () => {
           active={el.active}
           date={el.date}
           data={week[index]}
+          onSave={onSaveHandler.bind(this, el.date.getDay())}
         />
       ))}
     </section>
