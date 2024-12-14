@@ -1,11 +1,7 @@
 import * as yup from "yup";
 
 export const schema = yup.object().shape({
-  username: yup
-    .string()
-    .required("Имя пользователя обязательно для заполнения")
-    .min(4, "Имя пользователя должно состоять минимум из 4 буквы")
-    .matches(/^[a-zA-Z]+$/, "Имя пользователя должно содержать только буквы"),
+  email: yup.string().email("Некорректный email").required("Email обязателен"),
   password: yup
     .string()
     .required("Пароль обязателен для заполнения")
