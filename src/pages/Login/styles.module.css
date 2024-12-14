@@ -14,7 +14,7 @@
 
 .image {
   position: relative;
-  height: 30vh;
+  height: 40vh;
   width: 100%;
   background-image: url("../../assets/fox-with-monitor.jpeg");
   background-repeat: no-repeat;
@@ -57,21 +57,24 @@
   position: absolute;
   width: 4rem;
   top: 1%;
-  right: 60%;
+  right: 30%;
 }
 
 .bird--2 {
-  top: 3%;
+  width: 2rem;
+  top: 1%;
   right: 20%;
 }
 
-@media (min-width: 1040px) {
+@media (min-width: 768px) {
   .bird {
-    top: 5%;
+    top: 15%;
+    right: 30%;
   }
 
   .bird--2 {
-    top: 10%;
+    top: 40%;
+    right: 30%;
   }
 }
 
@@ -87,116 +90,5 @@
 @media (min-width: 768px) {
   .image-text {
     font-size: 2rem;
-  }
-}
-
-.form {
-  width: 90%;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .form {
-    margin: auto;
-    width: 45%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .form {
-    width: 40%;
-  }
-}
-
-.header {
-  width: max-content;
-  margin: 1rem auto;
-}
-
-.input {
-  background-color: #d87b374d;
-  width: 100%;
-  height: 2rem;
-  padding: 0.2rem 0.5rem;
-  margin: 0.5rem 0;
-  border-radius: 1rem;
-}
-
-@media (min-width: 768px) {
-  .input {
-    font-size: 0.9rem;
-  }
-}
-
-.input:focus {
-  outline: 2px solid var(--green-color);
-}
-
-@media (min-width: 768px) {
-  .form-label {
-    font-size: 1.05rem;
-  }
-}
-
-.password-container {
-  position: relative;
-}
-
-.btn-show-password {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-45%);
-}
-
-@media (min-width: 768px) {
-  .btn-show-password {
-    right: 0.8rem;
-  }
-}
-
-.password-icon {
-  width: 1rem;
-  height: 1rem;
-}
-
-@media (min-width: 768px) {
-  .password-icon {
-    width: 1.2rem;
-    height: 1.2rem;
-  }
-}
-
-.submit {
-  display: block;
-  width: 100%;
-  height: 2.2rem;
-  margin-top: 1rem;
-  border-radius: 1rem;
-  color: #fdf8f8;
-  background-color: var(--green-color);
-}
-
-@media (min-width: 768px) {
-  .submit {
-    font-size: 1rem;
-    height: 2.2rem;
-  }
-}
-
-.islogged {
-  margin-top: 0.3rem;
-}
-
-.registration {
-  margin-left: 0.2rem;
-  font-family: "Oswald", "Arial", sans-serif;
-  color: #13590e;
-}
-
-@media (min-width: 768px) {
-  .registration {
-    margin-left: 0.2rem;
-    font-size: 1rem;
   }
 }

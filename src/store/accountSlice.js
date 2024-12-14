@@ -10,6 +10,14 @@ const accountSlice = createSlice({
   name: "gender",
   initialState,
   reducers: {
+    setAccountData(state, action) {
+      const { username, password, gender } = action.payload;
+      state = {
+        username,
+        password,
+        gender,
+      };
+    },
     setUsername(state, action) {
       state.username = action.payload;
     },

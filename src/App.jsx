@@ -13,10 +13,10 @@ function App() {
   const history = useHistory();
   const isLoggedIn = useSelector((state) => state.isLogged.isLogged);
 
-  // if (!isLoggedIn) {
-  //   history.replace("/login");
-  //   return <Login />;
-  // }
+  if (!isLoggedIn) {
+    history.replace("/login");
+    return <Login />;
+  }
 
   return (
     <DoubleContainer>

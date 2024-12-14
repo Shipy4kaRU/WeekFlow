@@ -8,9 +8,10 @@ const isLoggedSlice = createSlice({
   name: "isLogged",
   initialState,
   reducers: {
-    setLogginValue: (state, action) => {
+    setLogginValue(state, action) {
       state.isLogged = action.payload;
     },
+    createAccount(state, action) {},
   },
 });
 
