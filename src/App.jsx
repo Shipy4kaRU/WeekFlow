@@ -22,6 +22,9 @@ function App() {
     <DoubleContainer>
       <Header></Header>
       <Switch>
+        <Route path="/login" exact>
+          <Redirect to="/calendar" />
+        </Route>
         <Route path="/" exact>
           <Redirect to="/calendar" />
         </Route>
