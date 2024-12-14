@@ -11,9 +11,8 @@ const isLoggedSlice = createSlice({
     setLogginValue(state, action) {
       state.isLogged = action.payload;
     },
-    createAccount(state, action) {},
   },
 });
 
 export default isLoggedSlice.reducer;
-export const isLoggedSliceAction = isLoggedSlice.actions;
+export const isLoggedAction = isLoggedSlice.actions;
