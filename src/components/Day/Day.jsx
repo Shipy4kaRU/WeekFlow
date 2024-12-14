@@ -7,7 +7,6 @@ const Day = ({ date, active, data, onSave, onPassed }) => {
   const difference = data.length && 4 - data.length;
   const startDays = new Array(4).fill("");
 
-  console.log(date);
   return (
     <div className={styles.day}>
       <div
