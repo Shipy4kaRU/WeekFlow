@@ -1,14 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
-  [{ text: "akakaka", isPassed: false }],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-];
+const initialState = [[], [], [], [], [], [], []];
 
 const weekSLice = createSlice({
   name: "week",

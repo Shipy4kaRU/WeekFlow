@@ -5,10 +5,11 @@ import { accountActions } from "../../store/accountSlice";
 
 const ChangeGender = () => {
   const gender = useSelector((state) => state.account.gender);
+  const isLoading = useSelector((state) => state.loading.settings);
   const dispatch = useDispatch();
 
   return (
-    <div className={styles.form}>
+    <div className={`${styles.form} ${isLoading && styles.loading}`}>
       <p className={styles.text}>Сменить пол:</p>
       <button
         className={`${styles.btn} ${gender === "мужской" ? styles.active : ""}`}
@@ -16,8 +17,9 @@ const ChangeGender = () => {
           if (gender !== "мужской")
             dispatch(accountActions.setGender("мужской"));
         }}
+        disabled={isLoading}
       >
-        Муж
+        {!isLoading && "Муж"}
       </button>
       <p>/</p>
       <button
@@ -26,8 +28,9 @@ const ChangeGender = () => {
           if (gender !== "женский")
             dispatch(accountActions.setGender("женский"));
         }}
+        disabled={isLoading}
       >
-        Жен
+        {!isLoading && "Жен"}
       </button>
     </div>
   );

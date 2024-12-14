@@ -36,10 +36,22 @@ const RegistrationForm = () => {
   const onSubmitHandler = async (data) => {
     try {
       if (!isRegistration) {
-        await signInWithEmailAndPassword(auth, data.email, data.password);
+        const result = await signInWithEmailAndPassword(
+          auth,
+          data.email,
+          data.password
+        );
+        console.log(result.user);
+        console.log(result.user.uid);
         dispatch(isLoggedAction.setLogginValue(true));
       } else {
-        await createUserWithEmailAndPassword(auth, data.email, data.password);
+        const result = await createUserWithEmailAndPassword(
+          auth,
+          data.email,
+          data.password
+        );
+        console.log(result.user);
+        console.log(result.user.uid);
         dispatch(isLoggedAction.setLogginValue(true));
       }
     } catch (error) {
@@ -51,9 +63,9 @@ const RegistrationForm = () => {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      dispatch(isLoggedAction.setLogginValue(true));
-
       console.log("Успешный вход через Google:", result.user);
+      console.log(result.user.uid);
+      dispatch(isLoggedAction.setLogginValue(true));
     } catch (error) {
       console.error("Ошибка входа через Google:", error.message);
     }

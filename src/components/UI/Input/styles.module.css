@@ -26,6 +26,8 @@
 .input:focus {
   outline: none;
   box-shadow: 0 0 10px 0.1px black;
+  padding: 0.5rem 0.3rem;
+  border-radius: 0.5rem;
   transform: scale(1.1);
 }
 
@@ -63,4 +65,21 @@
 .passed {
   opacity: 0.5;
   text-decoration: line-through;
+}
+
+.loading .input {
+  height: 2rem;
+  background: linear-gradient(-90deg, #e8f5e9 0%, #b2ebf2 50%, #e8f5e9 100%);
+  background-size: 200% 100%;
+  animation: pulse 1.2s ease-in-out infinite;
+  border: none;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
 }

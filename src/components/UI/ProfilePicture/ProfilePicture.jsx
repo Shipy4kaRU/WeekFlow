@@ -4,9 +4,10 @@ import { useSelector } from "react-redux";
 
 const ProfilePicture = () => {
   const gender = useSelector((state) => state.account.gender);
+  const isLoading = useSelector((state) => state.loading.profile);
 
   return (
-    <div className={styles.profile}>
+    <div className={`${styles.profile} ${isLoading && styles.loading}`}>
       <img
         src={
           PROFILE_ICONS[

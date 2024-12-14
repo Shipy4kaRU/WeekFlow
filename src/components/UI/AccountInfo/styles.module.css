@@ -21,3 +21,24 @@
 .info:active {
   opacity: 0.5;
 }
+
+.loading {
+  width: 15rem;
+  height: 1.8rem;
+  background: linear-gradient(-90deg, #e8f5e9 0%, #b2ebf2 50%, #e8f5e9 100%);
+  background-size: 200% 100%;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.loading .profile {
+  opacity: 0;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
