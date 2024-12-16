@@ -1,5 +1,5 @@
-import { useReducer } from "react";
+// import { useReducer } from "react";
 
-const useInput = (func) => {};
+// const useInput = (func) => {};
 
-export default useInput;
+// export default useInput;

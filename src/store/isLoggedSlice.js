@@ -14,11 +14,5 @@ const isLoggedSlice = createSlice({
   },
 });
 
-export const setLoggin = () => {
-  return async (dispatch) => {
-    dispatch();
-  };
-};
-
 export default isLoggedSlice.reducer;
 export const isLoggedAction = isLoggedSlice.actions;

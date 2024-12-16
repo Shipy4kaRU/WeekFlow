@@ -19,6 +19,9 @@ const weekSLice = createSlice({
       const { day, inputNumber, isPassed } = action.payload;
       state[day][inputNumber].isPassed = isPassed;
     },
+    setCalendar(state, action) {
+      return action.payload;
+    },
   },
 });
 

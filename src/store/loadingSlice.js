@@ -1,24 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  calendar: true,
-  profile: true,
-  settings: true,
+  calendar: false,
+  profile: false,
+  settings: false,
 };
 
 const loadingSlice = createSlice({
   name: "loading",
   initialState,
   reducers: {
-    setLoading(state) {
-      state.calendar = true;
-      state.profile = true;
-      state.settings = true;
-    },
-    stopLoading(state) {
-      state.calendar = false;
-      state.profile = false;
-      state.settings = false;
+    setLoading(state, action) {
+      const loadingStatus = action.payload;
+      state.calendar = loadingStatus;
+      state.profile = loadingStatus;
+      state.settings = loadingStatus;
     },
   },
 });

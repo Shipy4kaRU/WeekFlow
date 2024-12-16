@@ -6,17 +6,27 @@ import Calendar from "./pages/Calendar/Calendar";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import Settings from "./pages/Settings/Settings";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { setLogginData } from "./store/accountSlice";
 
 function App() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const isLoggedIn = useSelector((state) => state.isLogged.isLogged);
+  const userUid = useSelector((state) => state.account.uid);
 
-  // if (!isLoggedIn) {
-  //   history.replace("/login");
-  //   return <Login />;
-  // }
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(setLogginData(userUid));
+    }
+  }, [isLoggedIn, dispatch, userUid]);
+
+  if (!isLoggedIn) {
+    history.replace("/login");
+    return <Login />;
+  }
 
   return (
     <DoubleContainer>

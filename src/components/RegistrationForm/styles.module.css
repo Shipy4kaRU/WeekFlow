@@ -1,4 +1,5 @@
 .form {
+  position: relative;
   width: 90%;
   margin: 0 auto;
 }
@@ -115,4 +116,27 @@
 .bold {
   margin-left: 0.3rem;
   font-weight: bold;
+}
+
+.errorText {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: #912a2a;
+  animation: appear 0.3s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes appear {
+  0% {
+    width: 0;
+    overflow: hidden;
+  }
+  60% {
+    width: max-content;
+  }
+  90% {
+    transform: scale(1.2), translateX(-50%);
+  }
 }

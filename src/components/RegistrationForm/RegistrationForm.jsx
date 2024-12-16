@@ -14,9 +14,11 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import googleSvg from "../../assets/google.svg";
+import { accountActions } from "../../store/accountSlice";
 
 const RegistrationForm = () => {
   const [isRegistration, setIsRegistration] = useState(false);
+  const [loginError, setLoginError] = useState("");
   const dispatch = useDispatch();
 
   //использование react form hook
@@ -34,6 +36,7 @@ const RegistrationForm = () => {
   };
 
   const onSubmitHandler = async (data) => {
+    setLoginError("");
     try {
       if (!isRegistration) {
         const result = await signInWithEmailAndPassword(
@@ -41,8 +44,9 @@ const RegistrationForm = () => {
           data.email,
           data.password
         );
+        const uid = result.user.uid;
         console.log(result.user);
-        console.log(result.user.uid);
+        dispatch(accountActions.setUid(uid));
         dispatch(isLoggedAction.setLogginValue(true));
       } else {
         const result = await createUserWithEmailAndPassword(
@@ -50,24 +54,29 @@ const RegistrationForm = () => {
           data.email,
           data.password
         );
+        const uid = result.user.uid;
         console.log(result.user);
-        console.log(result.user.uid);
+        dispatch(accountActions.setUid(uid));
         dispatch(isLoggedAction.setLogginValue(true));
       }
     } catch (error) {
-      console.error("Ошибка:", error.message);
+      console.log(error.message);
+      setLoginError("Неверный логин или пароль!");
     }
   };
 
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
+    setLoginError("");
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log("Успешный вход через Google:", result.user);
-      console.log(result.user.uid);
+      const uid = result.user.uid;
+      dispatch(accountActions.setUid(uid));
       dispatch(isLoggedAction.setLogginValue(true));
+      console.log(result.user.uid);
     } catch (error) {
       console.error("Ошибка входа через Google:", error.message);
+      setLoginError("Ошибка входа через Google!");
     }
   };
 
@@ -84,6 +93,7 @@ const RegistrationForm = () => {
         <img src={googleSvg} alt="Google Icon" className={styles.google} />
         Войти через <span className={styles.bold}>Google</span>
       </button>
+      {Boolean(loginError) && <p className={styles.errorText}>{loginError}</p>}
       <div className={styles.container}>
         <label htmlFor="username" className={styles["form-label"]}>
           Email
