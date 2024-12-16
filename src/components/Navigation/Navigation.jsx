@@ -1,8 +1,21 @@
 import styles from "./styles.module.css";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import svg from "../../assets/svgSprite.svg";
+import { deleteFromLocalStorage } from "../../helpers/deleteFromLocalStorage";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useDispatch } from "react-redux";
+import { accountActions } from "../../store/accountSlice";
 
 const Navigation = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const onExitHandler = () => {
+    deleteFromLocalStorage("uid");
+    dispatch(accountActions.setUid());
+    history.replace("/");
+  };
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles["navbar-list"]}>
@@ -53,6 +66,18 @@ const Navigation = () => {
               <span className={styles.text}>Настройки</span>
             </div>
           </NavLink>
+        </li>
+        <li className={styles["link-element"]}>
+          <button to="/" className={styles.link} onClick={onExitHandler}>
+            <div className={styles["icon-container"]}>
+              <div className={styles.animation}>
+                <svg className={styles.icon}>
+                  <use href={`${svg}#exit`} />
+                </svg>
+              </div>
+              <span className={styles.text}>Выход</span>
+            </div>
+          </button>
         </li>
       </ul>
     </nav>

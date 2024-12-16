@@ -107,6 +107,9 @@
 
 .text {
   width: 0;
+  font-size: 1rem;
+  font-family: "Oswald", "Arial", sans-serif;
+  text-align: left;
   display: none;
   margin: auto 0;
   padding: 0;
