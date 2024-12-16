@@ -6,7 +6,27 @@ import { accountActions } from "../../store/accountSlice";
 const ChangeGender = () => {
   const gender = useSelector((state) => state.account.gender);
   const isLoading = useSelector((state) => state.loading.settings);
+  const userUid = useSelector((state) => state.account.uid);
   const dispatch = useDispatch();
+
+  const onSetGenderHandler = async (settingGender) => {
+    if (gender !== settingGender) {
+      dispatch(accountActions.setGender(settingGender));
+      const response = await fetch(
+        `https://weekflow-8020a-default-rtdb.firebaseio.com/users/${userUid}/account/gender.json`,
+        {
+          method: "PUT",
+          body: JSON.stringify(settingGender),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Ошибка при отправке данных корзины");
+      }
+    }
+  };
 
   return (
     <div className={`${styles.form} ${isLoading && styles.loading}`}>
@@ -14,8 +34,7 @@ const ChangeGender = () => {
       <button
         className={`${styles.btn} ${gender === "мужской" ? styles.active : ""}`}
         onClick={() => {
-          if (gender !== "мужской")
-            dispatch(accountActions.setGender("мужской"));
+          onSetGenderHandler("мужской");
         }}
         disabled={isLoading}
       >
@@ -25,8 +44,7 @@ const ChangeGender = () => {
       <button
         className={`${styles.btn} ${gender === "женский" ? styles.active : ""}`}
         onClick={() => {
-          if (gender !== "женский")
-            dispatch(accountActions.setGender("женский"));
+          onSetGenderHandler("женский");
         }}
         disabled={isLoading}
       >

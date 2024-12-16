@@ -32,7 +32,7 @@ const Week = () => {
       }
     );
     if (!response.ok) {
-      throw new Error("Ошибка при отправке данных корзины");
+      throw new Error("Ошибка при отправке данных");
     }
   };
 
@@ -54,7 +54,7 @@ const Week = () => {
       }
     );
     if (!response.ok) {
-      throw new Error("Ошибка при отправке данных корзины");
+      throw new Error("Ошибка при отправке данных");
     }
   };
 
