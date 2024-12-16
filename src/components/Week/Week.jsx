@@ -19,7 +19,7 @@ const Week = () => {
     else day--;
     dispatch(weekActions.setTask({ day, text, inputNumber, isPassed }));
     const response = await fetch(
-      `https://weekflow-8020a-default-rtdb.firebaseio.com/users/${userUid}/calendar/${day}/${inputNumber}.json`,
+      `https://weekflow-8020a-default-rtdb.firebaseio.com/users/${userUid}/calendar/${day}/data/${inputNumber}.json`,
       {
         method: "PUT",
         body: JSON.stringify({
@@ -41,7 +41,7 @@ const Week = () => {
     else day--;
     dispatch(weekActions.setPassed({ day, inputNumber, isPassed }));
     const response = await fetch(
-      `https://weekflow-8020a-default-rtdb.firebaseio.com/users/${userUid}/calendar/${day}/${inputNumber}.json`,
+      `https://weekflow-8020a-default-rtdb.firebaseio.com/users/${userUid}/calendar/${day}/data/${inputNumber}.json`,
       {
         method: "PUT",
         body: JSON.stringify({

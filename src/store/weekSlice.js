@@ -8,16 +8,18 @@ const weekSLice = createSlice({
   reducers: {
     setTask(state, action) {
       const { day, inputNumber, text, isPassed } = action.payload;
-      if (!state[day][inputNumber])
-        state[day][inputNumber] = { text: text, isPassed: isPassed };
-      else {
-        state[day][inputNumber].text = text;
-        state[day][inputNumber].isPassed = isPassed;
+      if (!state[day]) state[day] = { data: [] };
+      if (!state[day].data) state[day].data = [];
+      if (!state[day].data[inputNumber]) {
+        state[day].data[inputNumber] = { text: text, isPassed: isPassed };
+      } else {
+        state[day].data[inputNumber].text = text;
+        state[day].data[inputNumber].isPassed = isPassed;
       }
     },
     setPassed(state, action) {
       const { day, inputNumber, isPassed } = action.payload;
-      state[day][inputNumber].isPassed = isPassed;
+      state[day].data[inputNumber].isPassed = isPassed;
     },
     setCalendar(state, action) {
       return action.payload;

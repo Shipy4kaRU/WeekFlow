@@ -1,13 +1,17 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./styles.module.css";
 import svg from "../../../assets/svgSprite.svg";
 import { useSelector } from "react-redux";
 
 const Input = ({ task, onSave, onPassed, inputNumber, isDisabled, passed }) => {
   const isLoading = useSelector((state) => state.loading.calendar);
-  const [input, setinput] = useState(task || "");
+  const [input, setInput] = useState(task || "");
   const [isPassed, setIsPassed] = useState(passed);
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    setInput(task || ""); // иначе может не прогружать некоторые новые значения
+  }, [task]);
 
   let isInputDisabled = false;
   if (isLoading || isDisabled) isInputDisabled = true;
@@ -34,7 +38,7 @@ const Input = ({ task, onSave, onPassed, inputNumber, isDisabled, passed }) => {
         className={`${styles.input} ${isPassed && styles.passed}`}
         value={input}
         onChange={(e) => {
-          setinput(e.target.value);
+          setInput(e.target.value);
         }}
         onClick={onClickHandler}
         onBlur={onBlurHandler}

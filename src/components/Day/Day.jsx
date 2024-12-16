@@ -4,8 +4,13 @@ import Input from "../UI/Input/Input";
 const weekDays = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
 const Day = ({ date, active, data, onSave, onPassed }) => {
-  const difference = data.length && 4 - data.length;
+  let dayData = data.data;
+  if (!dayData) dayData = [];
+
+  const difference = dayData.length && 4 - dayData.length;
   const startDays = new Array(4).fill("");
+
+  console.log(dayData);
 
   return (
     <div className={styles.day}>
@@ -17,7 +22,7 @@ const Day = ({ date, active, data, onSave, onPassed }) => {
         }`}</p>
         <p className={styles.weekDay}>{weekDays[date.getDay()]}</p>
       </div>
-      {!data.length
+      {!dayData.length
         ? startDays.map((el, index) => (
             <Input
               key={index++}
@@ -26,10 +31,10 @@ const Day = ({ date, active, data, onSave, onPassed }) => {
               onPassed={onPassed}
               onSave={onSave}
               inputNumber={index}
-              isDisabled={index++ > data.length ? true : false}
+              isDisabled={index++ > dayData.length ? true : false}
             ></Input>
           ))
-        : data.map((el, index) => (
+        : dayData.map((el, index) => (
             <Input
               key={index++}
               task={el.text}
@@ -37,24 +42,26 @@ const Day = ({ date, active, data, onSave, onPassed }) => {
               onPassed={onPassed}
               onSave={onSave}
               inputNumber={index}
-              isDisabled={index > data.length ? true : false}
+              isDisabled={index > dayData.length ? true : false}
             ></Input>
           ))}
       <Input
-        key={data.length}
+        key={dayData.length}
         onSave={onSave}
-        inputNumber={data.length}
-        isDisabled={data.length === 0 ? true : false}
+        inputNumber={dayData.length}
+        isDisabled={dayData.length === 0 ? true : false}
       ></Input>
       {difference > 0 &&
         new Array(difference)
           .fill(null)
           .map((el, index) => (
             <Input
-              key={index + data.length + 1}
+              key={index + dayData.length + 1}
               onSave={onSave}
-              inputNumber={index + data.length + 1}
-              isDisabled={index + data.length + 1 > data.length ? true : false}
+              inputNumber={index + dayData.length + 1}
+              isDisabled={
+                index + dayData.length + 1 > dayData.length ? true : false
+              }
             ></Input>
           ))}
     </div>
