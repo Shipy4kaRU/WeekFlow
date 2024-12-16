@@ -10,6 +10,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { setLogginData } from "./store/accountSlice";
+import { getFromLocalStorage } from "./helpers/getFromLocalStorage";
+import { isLoggedAction } from "./store/isLoggedSlice";
+import { accountActions } from "./store/accountSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +21,11 @@ function App() {
   const userUid = useSelector((state) => state.account.uid);
 
   useEffect(() => {
+    const isSavedUid = getFromLocalStorage("uid");
+    if (isSavedUid) {
+      dispatch(accountActions.setUid(isSavedUid));
+      dispatch(isLoggedAction.setLogginValue(true));
+    }
     if (isLoggedIn) {
       dispatch(setLogginData(userUid));
     }

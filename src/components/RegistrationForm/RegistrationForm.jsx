@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { isLoggedAction } from "../../store/isLoggedSlice";
 import styles from "./styles.module.css";
@@ -15,10 +15,12 @@ import {
 } from "firebase/auth";
 import googleSvg from "../../assets/google.svg";
 import { accountActions } from "../../store/accountSlice";
+import { addToLocalStorage } from "../../helpers/addToLocalStorage";
 
 const RegistrationForm = () => {
   const [isRegistration, setIsRegistration] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const saveSession = useRef();
   const dispatch = useDispatch();
 
   //использование react form hook
@@ -48,6 +50,7 @@ const RegistrationForm = () => {
         console.log(result.user);
         dispatch(accountActions.setUid(uid));
         dispatch(isLoggedAction.setLogginValue(true));
+        if (saveSession.current.checked) addToLocalStorage("uid", uid);
       } else {
         const result = await createUserWithEmailAndPassword(
           auth,
@@ -58,6 +61,7 @@ const RegistrationForm = () => {
         console.log(result.user);
         dispatch(accountActions.setUid(uid));
         dispatch(isLoggedAction.setLogginValue(true));
+        if (saveSession.current.checked) addToLocalStorage("uid", uid);
       }
     } catch (error) {
       console.log(error.message);
@@ -74,6 +78,7 @@ const RegistrationForm = () => {
       dispatch(accountActions.setUid(uid));
       dispatch(isLoggedAction.setLogginValue(true));
       console.log(result.user.uid);
+      if (saveSession.current.checked) addToLocalStorage("uid", uid);
     } catch (error) {
       console.error("Ошибка входа через Google:", error.message);
       setLoginError("Ошибка входа через Google!");
@@ -113,7 +118,13 @@ const RegistrationForm = () => {
       </div>
       <PasswordInput errors={errors} register={register}></PasswordInput>
       <div>
-        <input type="checkbox" id="remember" className={styles.remember} />
+        <input
+          type="checkbox"
+          id="remember"
+          className={styles.remember}
+          ref={saveSession}
+          checked
+        />
         <label htmlFor="remember" className={styles["remember-label"]}>
           Запомнить меня
         </label>

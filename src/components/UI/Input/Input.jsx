@@ -21,8 +21,8 @@ const Input = ({ task, onSave, onPassed, inputNumber, isDisabled, passed }) => {
       onSave(e.target.value, inputNumber, isPassed);
   };
 
-  const onPassedHandler = () => {
-    onPassed(inputNumber, !isPassed);
+  const onPassedHandler = (text) => {
+    onPassed(inputNumber, !isPassed, text);
     setIsPassed((state) => !state);
   };
 
@@ -42,7 +42,12 @@ const Input = ({ task, onSave, onPassed, inputNumber, isDisabled, passed }) => {
         ref={inputRef}
       />
       {!isDisabled && task && (
-        <button className={styles.button} onClick={onPassedHandler}>
+        <button
+          className={styles.button}
+          onClick={() => {
+            onPassedHandler(inputRef.current.value);
+          }}
+        >
           <span className="visually-hidden">Удалить задачу</span>
           <svg className={styles.icon}>
             <use href={`${svg}#check`} />

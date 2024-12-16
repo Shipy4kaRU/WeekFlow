@@ -12,17 +12,50 @@ const Week = () => {
   const dispatch = useDispatch();
 
   const week = useSelector((state) => state.week);
+  const userUid = useSelector((state) => state.account.uid);
 
-  const onSaveHandler = (day, text, inputNumber, isPassed) => {
+  const onSaveHandler = async (day, text, inputNumber, isPassed) => {
     if (day === 0) day = 6;
     else day--;
     dispatch(weekActions.setTask({ day, text, inputNumber, isPassed }));
+    const response = await fetch(
+      `https://weekflow-8020a-default-rtdb.firebaseio.com/users/${userUid}/calendar/${day}/${inputNumber}.json`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          text: text,
+          isPassed: isPassed,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Ошибка при отправке данных корзины");
+    }
   };
 
-  const onPassedHandler = (day, inputNumber, isPassed) => {
+  const onPassedHandler = async (day, inputNumber, isPassed, text) => {
     if (day === 0) day = 6;
     else day--;
     dispatch(weekActions.setPassed({ day, inputNumber, isPassed }));
+    const response = await fetch(
+      `https://weekflow-8020a-default-rtdb.firebaseio.com/users/${userUid}/calendar/${day}/${inputNumber}.json`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          text: text,
+          isPassed: isPassed,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Ошибка при отправке данных корзины");
+    }
   };
 
   useEffect(() => {
