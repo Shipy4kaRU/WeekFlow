@@ -18,7 +18,7 @@ import { addToLocalStorage } from "../../helpers/addToLocalStorage";
 
 const RegistrationForm = () => {
   const [isRegistration, setIsRegistration] = useState(false);
-  const [saveSession, setSaveSession] = useState(false);
+  const [saveSession, setSaveSession] = useState(true);
   const [loginError, setLoginError] = useState("");
   const dispatch = useDispatch();
 
@@ -58,7 +58,7 @@ const RegistrationForm = () => {
         const uid = result.user.uid;
         console.log(result.user);
         dispatch(accountActions.setUid(uid));
-        if (saveSession.current.checked) addToLocalStorage("uid", uid);
+        if (saveSession) addToLocalStorage("uid", uid);
       }
     } catch (error) {
       console.log(error.message);
@@ -74,7 +74,7 @@ const RegistrationForm = () => {
       const uid = result.user.uid;
       dispatch(accountActions.setUid(uid));
       console.log(result.user.uid);
-      if (saveSession.current.checked) addToLocalStorage("uid", uid);
+      if (saveSession) addToLocalStorage("uid", uid);
     } catch (error) {
       console.error("Ошибка входа через Google:", error.message);
       setLoginError("Ошибка входа через Google!");
@@ -121,7 +121,7 @@ const RegistrationForm = () => {
           onChange={() => {
             setSaveSession((state) => !state);
           }}
-          checked
+          checked={saveSession}
         />
         <label htmlFor="remember" className={styles["remember-label"]}>
           Запомнить меня
