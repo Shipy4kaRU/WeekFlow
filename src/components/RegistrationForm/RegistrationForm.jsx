@@ -1,6 +1,5 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { isLoggedAction } from "../../store/isLoggedSlice";
 import styles from "./styles.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,8 +18,8 @@ import { addToLocalStorage } from "../../helpers/addToLocalStorage";
 
 const RegistrationForm = () => {
   const [isRegistration, setIsRegistration] = useState(false);
+  const [saveSession, setSaveSession] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const saveSession = useRef();
   const dispatch = useDispatch();
 
   //использование react form hook
@@ -49,8 +48,7 @@ const RegistrationForm = () => {
         const uid = result.user.uid;
         console.log(result.user);
         dispatch(accountActions.setUid(uid));
-        dispatch(isLoggedAction.setLogginValue(true));
-        if (saveSession.current.checked) addToLocalStorage("uid", uid);
+        if (saveSession) addToLocalStorage("uid", uid);
       } else {
         const result = await createUserWithEmailAndPassword(
           auth,
@@ -60,7 +58,6 @@ const RegistrationForm = () => {
         const uid = result.user.uid;
         console.log(result.user);
         dispatch(accountActions.setUid(uid));
-        dispatch(isLoggedAction.setLogginValue(true));
         if (saveSession.current.checked) addToLocalStorage("uid", uid);
       }
     } catch (error) {
@@ -76,7 +73,6 @@ const RegistrationForm = () => {
       const result = await signInWithPopup(auth, provider);
       const uid = result.user.uid;
       dispatch(accountActions.setUid(uid));
-      dispatch(isLoggedAction.setLogginValue(true));
       console.log(result.user.uid);
       if (saveSession.current.checked) addToLocalStorage("uid", uid);
     } catch (error) {
@@ -122,7 +118,9 @@ const RegistrationForm = () => {
           type="checkbox"
           id="remember"
           className={styles.remember}
-          ref={saveSession}
+          onChange={() => {
+            setSaveSession((state) => !state);
+          }}
           checked
         />
         <label htmlFor="remember" className={styles["remember-label"]}>

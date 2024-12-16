@@ -56,7 +56,6 @@ export const setLogginData = (user) => {
       }
       const calendar = data.calendar;
       if (calendar) {
-        console.log(calendar);
         dispatch(weekActions.setCalendar(calendar));
       } else {
         throw new Error("Ошибка загрузки данных календаря");

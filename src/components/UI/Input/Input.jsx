@@ -8,8 +8,8 @@ const Input = ({ task, onSave, onPassed, inputNumber, isDisabled, passed }) => {
   const [input, setinput] = useState(task || "");
   const [isPassed, setIsPassed] = useState(passed);
   const inputRef = useRef(null);
-  let isInputDisabled = false;
 
+  let isInputDisabled = false;
   if (isLoading || isDisabled) isInputDisabled = true;
 
   const onClickHandler = () => {

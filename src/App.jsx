@@ -11,27 +11,22 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { setLogginData } from "./store/accountSlice";
 import { getFromLocalStorage } from "./helpers/getFromLocalStorage";
-import { isLoggedAction } from "./store/isLoggedSlice";
 import { accountActions } from "./store/accountSlice";
 
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const isLoggedIn = useSelector((state) => state.isLogged.isLogged);
   const userUid = useSelector((state) => state.account.uid);
 
   useEffect(() => {
     const isSavedUid = getFromLocalStorage("uid");
-    if (isSavedUid) {
-      dispatch(accountActions.setUid(isSavedUid));
-      dispatch(isLoggedAction.setLogginValue(true));
-    }
-    if (isLoggedIn) {
+    if (isSavedUid && !userUid) dispatch(accountActions.setUid(isSavedUid));
+    if (userUid) {
       dispatch(setLogginData(userUid));
     }
-  }, [isLoggedIn, dispatch, userUid]);
+  }, [dispatch, userUid]);
 
-  if (!isLoggedIn) {
+  if (!userUid) {
     history.replace("/login");
     return <Login />;
   }
