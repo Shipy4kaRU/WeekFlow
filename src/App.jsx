@@ -19,6 +19,8 @@ function App() {
 		const isThisRegistration = getLS('registration');
 		const accountData = state.account;
 		const week = state.week;
+		console.log(isThisRegistration);
+		console.log(userUid);
 		if (isSavedUid && !userUid) dispatch(account.setUid(isSavedUid));
 		if (userUid && !isThisRegistration) {
 			dispatch(setLogginData(userUid));

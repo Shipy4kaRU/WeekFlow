@@ -10,6 +10,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthP
 import googleSvg from '../../assets/google.svg';
 import { account } from '../../constants/ACTIONS';
 import { addLS } from '../../constants/LOCAL_STORAGE';
+import checkUser from '../../helpers/checkUser';
 
 const RegistrationForm = () => {
 	const [isRegistration, setIsRegistration] = useState(false);
@@ -56,21 +57,22 @@ const RegistrationForm = () => {
 		}
 	};
 
-	const handleGoogleSignIn = async (data) => {
+	const handleGoogleSignIn = async () => {
 		const provider = new GoogleAuthProvider();
 		setLoginError('');
 		try {
 			const result = await signInWithPopup(auth, provider);
 			const uid = result.user.uid;
-			dispatch(account.setUid(uid));
-			console.log(result.user.uid);
 			if (saveSession) addLS('uid', uid);
-
-			// const uid = result.user.uid;
-			// dispatch(accountActions.setUsername(data.email));
-			// dispatch(accountActions.setPassword(data.password));
-			// dispatch(accountActions.setUid(uid));
-			// addToLocalStorage("registration", true);
+			const isReg = await checkUser(uid);
+			console.log(isReg);
+			if (!isReg) {
+				console.log('I AM HEREEE');
+				addLS('registration', true);
+				dispatch(account.setPassword('отсутствует'));
+				dispatch(account.setUsername(result.user.displayName));
+			}
+			dispatch(account.setUid(uid));
 		} catch (error) {
 			console.error('Ошибка входа через Google:', error.message);
 			setLoginError('Ошибка входа через Google!');
