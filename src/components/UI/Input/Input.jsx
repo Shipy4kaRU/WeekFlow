@@ -11,7 +11,8 @@ const Input = ({ task, onSave, onPassed, inputNumber, isDisabled, passed }) => {
 
   useEffect(() => {
     setInput(task || ""); // иначе может не прогружать некоторые новые значения
-  }, [task]);
+    setIsPassed(passed);
+  }, [task, passed]);
 
   let isInputDisabled = false;
   if (isLoading || isDisabled) isInputDisabled = true;

@@ -1,61 +1,64 @@
-import { Route, Switch, Redirect } from "react-router-dom";
-import Header from "./components/Header/Header";
-import DoubleContainer from "./components/UI/DoubleContainer/DoubleContainer";
-import NotFound from "./pages/NotFound/NotFound";
-import Calendar from "./pages/Calendar/Calendar";
-import Profile from "./pages/Profile/Profile";
-import Login from "./pages/Login/Login";
-import Settings from "./pages/Settings/Settings";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
-import { setLogginData } from "./store/accountSlice";
-import { getFromLocalStorage } from "./helpers/getFromLocalStorage";
-import { accountActions } from "./store/accountSlice";
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { useDispatch, useStore, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Login, Header, Calendar, Profile, Settings, NotFound } from './constants/PAGES';
+import { getLS, removeLS } from './constants/LOCAL_STORAGE';
+import { account, setLogginData, exportAccountData } from './constants/ACTIONS';
+import DoubleContainer from './components/UI/DoubleContainer/DoubleContainer';
 
 function App() {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const userUid = useSelector((state) => state.account.uid);
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const store = useStore();
 
-  useEffect(() => {
-    const isSavedUid = getFromLocalStorage("uid");
-    if (isSavedUid && !userUid) dispatch(accountActions.setUid(isSavedUid));
-    if (userUid) {
-      dispatch(setLogginData(userUid));
-    }
-  }, [dispatch, userUid]);
+	const userUid = useSelector((state) => state.account.uid);
 
-  if (!userUid) {
-    history.replace("/login");
-    return <Login />;
-  }
+	useEffect(() => {
+		const state = store.getState();
+		const isSavedUid = getLS('uid');
+		const isThisRegistration = getLS('registration');
+		const accountData = state.account;
+		const week = state.week;
+		if (isSavedUid && !userUid) dispatch(account.setUid(isSavedUid));
+		if (userUid && !isThisRegistration) {
+			dispatch(setLogginData(userUid));
+		}
+		if (userUid && isThisRegistration) {
+			removeLS('registration');
+			dispatch(exportAccountData(userUid, accountData, week));
+		}
+	}, [dispatch, store, userUid]);
 
-  return (
-    <DoubleContainer>
-      <Header></Header>
-      <Switch>
-        <Route path="/login" exact>
-          <Redirect to="/calendar" />
-        </Route>
-        <Route path="/" exact>
-          <Redirect to="/calendar" />
-        </Route>
-        <Route path="/calendar">
-          <Calendar />
-        </Route>
-        <Route path="/profile">
-          <Profile />
-        </Route>
-        <Route path="/settings">
-          <Settings />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </DoubleContainer>
-  );
+	if (!userUid) {
+		history.replace('/login');
+		return <Login />;
+	}
+
+	return (
+		<DoubleContainer>
+			<Header></Header>
+			<Switch>
+				<Route path="/login" exact>
+					<Redirect to="/calendar" />
+				</Route>
+				<Route path="/" exact>
+					<Redirect to="/calendar" />
+				</Route>
+				<Route path="/calendar">
+					<Calendar />
+				</Route>
+				<Route path="/profile">
+					<Profile />
+				</Route>
+				<Route path="/settings">
+					<Settings />
+				</Route>
+				<Route path="*">
+					<NotFound />
+				</Route>
+			</Switch>
+		</DoubleContainer>
+	);
 }
 
 export default App;

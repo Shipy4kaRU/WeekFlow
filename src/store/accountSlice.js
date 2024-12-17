@@ -5,7 +5,7 @@ import { weekActions } from "./weekSlice";
 const initialState = {
   username: "",
   password: "",
-  gender: "",
+  gender: "мужской",
   uid: "",
 };
 
@@ -58,12 +58,45 @@ export const setLogginData = (user) => {
       if (calendar) {
         dispatch(weekActions.setCalendar(calendar));
       } else {
-        throw new Error("Ошибка загрузки данных календаря");
+        throw new Error("Ошибка загрузки данных");
       }
     } catch (err) {
-      console.log(err);
+      console.log("Ошибка извлечения данных", err);
     } finally {
       dispatch(loadingActions.setLoading(false));
+    }
+  };
+};
+
+export const exportAccountData = (userUid, accountData, week) => {
+  return async (dispatch) => {
+    const responseData = async () => {
+      const response = await fetch(
+        `https://weekflow-8020a-default-rtdb.firebaseio.com/users/${userUid}.json`,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            account: {
+              gender: accountData.gender,
+              password: accountData.password,
+              username: accountData.username,
+            },
+            calendar: [...week],
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Ошибка при извлечении данных с сервера");
+      }
+      return await response.json();
+    };
+    try {
+      await responseData();
+    } catch (err) {
+      console.log("Ошибка извлечения данных", err);
     }
   };
 };

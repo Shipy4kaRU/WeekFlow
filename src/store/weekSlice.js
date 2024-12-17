@@ -1,6 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [[], [], [], [], [], [], []];
+const initialState = [
+  { isExist: true, data: [] },
+  { isExist: true, data: [] },
+  { isExist: true, data: [] },
+  { isExist: true, data: [] },
+  { isExist: true, data: [] },
+  { isExist: true, data: [] },
+  { isExist: true, data: [] },
+];
 
 const weekSLice = createSlice({
   name: "week",
@@ -8,7 +16,7 @@ const weekSLice = createSlice({
   reducers: {
     setTask(state, action) {
       const { day, inputNumber, text, isPassed } = action.payload;
-      if (!state[day]) state[day] = { data: [] };
+      if (!state[day]) state[day] = { isExist: true, data: [] };
       if (!state[day].data) state[day].data = [];
       if (!state[day].data[inputNumber]) {
         state[day].data[inputNumber] = { text: text, isPassed: isPassed };
