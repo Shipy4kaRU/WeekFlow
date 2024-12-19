@@ -73,7 +73,7 @@ const Week = () => {
 			{updatedWEEK_DAYS.map((el, index) => (
 				<Day
 					key={el.date.getDay()}
-					active={new Date().getDate() === el.date.getDate() ? el.active : undefined}
+					active={new Date().getDate() === el.date.getDate() && new Date().getMonth() === el.date.getMonth() ? el.active : undefined}
 					date={el.date}
 					data={week[index]}
 					onSave={onSaveHandler.bind(this, el.date.getDay())}
