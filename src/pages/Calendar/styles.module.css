@@ -1,14 +1,9 @@
 .header {
-  font-size: 2.2rem;
-  color: var(--green-color);
-  display: flex;
-  justify-content: center;
+	font-size: 2.2rem;
+	color: var(--green-color);
+	display: flex;
+	justify-content: center;
 }
 
 .home {
-}
-
-.date {
-  font-size: 1.4rem;
-  font-weight: 500;
 }

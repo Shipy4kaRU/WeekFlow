@@ -1,23 +1,15 @@
-import Week from "../../components/Week/Week";
-import styles from "./styles.module.css";
-import { formatDate } from "../../helpers/formatDate()";
+import Week from '../../components/Week/Week';
+import WeekSlider from '../../components/WeekSlider/WeekSlider';
+import styles from './styles.module.css';
 
 const Calendar = () => {
-  return (
-    <section className={styles.home}>
-      <h1 className="visually-hidden">Календарь</h1>
-      <p className={styles.date}>
-        {formatDate(
-          new Date(),
-          "numeric",
-          "long",
-          "short",
-          "numeric"
-        ).toUpperCase()}
-      </p>
-      <Week></Week>
-    </section>
-  );
+	return (
+		<section className={styles.home}>
+			<h1 className="visually-hidden">Календарь</h1>
+			<WeekSlider />
+			<Week />
+		</section>
+	);
 };
 
 export default Calendar;
