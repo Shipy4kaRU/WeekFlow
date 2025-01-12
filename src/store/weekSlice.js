@@ -19,8 +19,8 @@ const weekSLice = createSlice({
 	reducers: {
 		setTask(state, action) {
 			const { day, inputNumber, text, isPassed } = action.payload;
-			if (!state.weeks[day]) state[day] = { isExist: true, data: [] };
-			if (!state.weeks[day].data) state[day].data = [];
+			if (!state.weeks[day]) state.weeks[day] = { isExist: true, data: [] };
+			if (!state.weeks[day].data) state.weeks[day].data = [];
 			if (!state.weeks[day].data[inputNumber]) {
 				state.weeks[day].data[inputNumber] = { text: text, isPassed: isPassed };
 			} else {

@@ -13,28 +13,30 @@ function App() {
 
 	const userUid = useSelector((state) => state.account.uid);
 
-	// useEffect(() => {
-	// 	const state = store.getState();
-	// 	const isSavedUid = getLS('uid');
-	// 	const isThisRegistration = getLS('registration');
-	// 	const accountData = state.account;
-	// 	const week = state.week;
-	// 	console.log(isThisRegistration);
-	// 	console.log(userUid);
-	// 	if (isSavedUid && !userUid) dispatch(account.setUid(isSavedUid));
-	// 	if (userUid && !isThisRegistration) {
-	// 		dispatch(setLogginData(userUid));
-	// 	}
-	// 	if (userUid && isThisRegistration) {
-	// 		removeLS('registration');
-	// 		dispatch(exportAccountData(userUid, accountData, week));
-	// 	}
-	// }, [dispatch, store, userUid]);
+	useEffect(() => {
+		const state = store.getState();
+		const isSavedUid = getLS('uid');
+		const isThisRegistration = getLS('registration');
+		const accountData = state.account;
+		const week = state.week.weeks;
+		const currentWeek = state.week.currentWeek;
+		console.log(isThisRegistration);
+		console.log(userUid);
+		if (isSavedUid && !userUid) dispatch(account.setUid(isSavedUid));
+		if (userUid && !isThisRegistration) {
+			dispatch(setLogginData(userUid));
+		}
+		if (userUid && isThisRegistration) {
+			removeLS('registration');
+			console.log('I AM HERE', userUid, accountData, week, currentWeek);
+			dispatch(exportAccountData(userUid, accountData, week, currentWeek));
+		}
+	}, [dispatch, store, userUid]);
 
-	// if (!userUid) {
-	// 	history.replace('/login');
-	// 	return <Login />;
-	// }
+	if (!userUid) {
+		history.replace('/login');
+		return <Login />;
+	}
 
 	return (
 		<DoubleContainer>
