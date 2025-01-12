@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/WeekFlow/static/css/main.639d9763.css",
+    "main.js": "/WeekFlow/static/js/main.d9990ff4.js",
+    "static/media/notfound.gif": "/WeekFlow/static/media/notfound.181c5a6430bcb77324b1.gif",
+    "static/media/fox-with-monitor.jpeg": "/WeekFlow/static/media/fox-with-monitor.dbbdbf1579d0b6e4c6b3.jpeg",
+    "static/media/logo.svg": "/WeekFlow/static/media/logo.e320485ecd83669a710e0569061645dd.svg",
+    "static/media/bird.svg": "/WeekFlow/static/media/bird.f640f685cd25c0638fa1c8345509a87e.svg",
+    "static/media/woman-5.svg": "/WeekFlow/static/media/woman-5.18a9775bcea5a7c449ae3d50a4259069.svg",
+    "static/media/svgSprite.svg": "/WeekFlow/static/media/svgSprite.98fe1060198eaf41b86dcd0defe62403.svg",
+    "static/media/man-1.svg": "/WeekFlow/static/media/man-1.ab1e727636b3f5e68877359b7a0f64e1.svg",
+    "static/media/man-3.svg": "/WeekFlow/static/media/man-3.0c2e6685f6711aaec503f2442a9c19dc.svg",
+    "static/media/woman-1.svg": "/WeekFlow/static/media/woman-1.1ff0639d185106573bf843b1739f3138.svg",
+    "static/media/woman-6.svg": "/WeekFlow/static/media/woman-6.fe055e4e675effc8a01b450ecfecd2d5.svg",
+    "static/media/woman-4.svg": "/WeekFlow/static/media/woman-4.c757d6bc4020d3f2d3db2455235d7c88.svg",
+    "static/media/man-5.svg": "/WeekFlow/static/media/man-5.56076d3de702dd2b6b670e090f06d2c5.svg",
+    "static/media/man-4.svg": "/WeekFlow/static/media/man-4.ddcc6e5db1d939c780c0164661ea4860.svg",
+    "static/media/man-2.svg": "/WeekFlow/static/media/man-2.dfb2fdc2d2d2f34674767b21165540d1.svg",
+    "static/media/man-6.svg": "/WeekFlow/static/media/man-6.580d6a03a57ca1f863a77eb0c57e6dbe.svg",
+    "static/media/woman-2.svg": "/WeekFlow/static/media/woman-2.58e02ba0eec20ce20c3b398be8fea735.svg",
+    "static/media/woman-3.svg": "/WeekFlow/static/media/woman-3.aa5846cbc9599bc19856031875970dc4.svg",
+    "static/media/google.svg": "/WeekFlow/static/media/google.e835cd7c439a0192a883c94c7c1a54ab.svg",
+    "index.html": "/WeekFlow/index.html",
+    "main.639d9763.css.map": "/WeekFlow/static/css/main.639d9763.css.map",
+    "main.d9990ff4.js.map": "/WeekFlow/static/js/main.d9990ff4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.639d9763.css",
+    "static/js/main.d9990ff4.js"
+  ]
+}
